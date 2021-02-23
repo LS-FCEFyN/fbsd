@@ -4,7 +4,7 @@
 # most of this comes from the freebsd handbook 5.4.1. Quick Start x-config
 # I'm only planing to add additional settings for configuring printers "automagically"
 
-date > installx.log
+date > setup.log
 
 grep -q "kern.vty" /boot/loader.conf || echo "kern.vty=vt" >> /boot/loader.conf
 
@@ -74,7 +74,7 @@ enable_cups(){
 
 # this is mainly just to make sure pkg has been bootstrapped
 export ASSUME_ALWAYS_YES=yes
-pkg update | tee -a installx.log
+pkg update | tee -a setup.log
 
 # Your user needs to be in the video group to use video acceleration
 default_user=`grep 1001 /etc/passwd | awk -F: '{ print $1 }'`
@@ -289,8 +289,8 @@ opt_activities=$(dialog --checklist "Select additional options" 0 0 0 \
 # and making it easy to find by having a big comment block
 # above it
 #
-echo "pkg install -y $all_pkgs" | tee -a installx.log
-pkg install -y $all_pkgs | tee -a installx.log
+echo "pkg install -y $all_pkgs" | tee -a setup.log
+pkg install -y $all_pkgs | tee -a setup.log
 
 # post install stuff
 if [ "slim" = $mywm ] ; then
