@@ -1,6 +1,10 @@
 #!/bin/sh
 
 FILE=/etc/devfs.rules
+DEFAULT_USER=`grep 1001 /etc/passwd | awk -F: '{ print $1 }'`
+
+pw usermod $DEFAULT_USER -G cups
+
 if test -f "$FILE"; then
 	cat <<EOT >> $FILE 
 	[system=10]
