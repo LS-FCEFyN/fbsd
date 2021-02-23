@@ -131,7 +131,7 @@ case $desktop in
       ####################################
       #		Minimal Install 	 #
       ####################################
-      DESKTOP_PGKS="plasma5-plasma ${mywm}" 
+      DESKTOP_PGKS="plasma5-plasma dolphin konsole kmix ${mywm}" 
       sysrc ${mywm}_enable="YES"
       ;;
   lxde)
@@ -162,21 +162,16 @@ sysrc hald_enable="YES"
 grep "proc /proc procfs" /etc/fstab || echo "proc /proc procfs rw 0 0" >> /etc/fstab
 #!/bin/sh
 
-# A number of the more lightweight desktops don't include everything you need
-# and anyone coming from linux probably wants bash, sudo & vim. Let's make
-# the transition easy for them
+# Additional packages that I may or may not want
 
 extra_pkgs=$(dialog --checklist "Select additional packages to install" 0 0 0 \
 firefox "Firefox Web browser" on \
-bash "GNU Bourne-Again SHell" of \
-vim-console "VI Improved" of \
+doas "simpler alternative to sudo" on \
+linux_base-c7 "centos v7 linux binary compatiblity layer" on \
+hplip "HP Linux Imaging and Printing" on \
 git-lite "lightweight git client" of \
-sudo "superuser do, please do note that this is a bloated mess" of \
-thunderbird "Thunderbird Email Client" off \
 libreoffice "open source & nice suite" off \
 vlc "Video Player" off \
-doas "simpler alternative to sudo" on \
-linux_base-c7 "centos v7 linux binary compatiblity layer" off \
 virtualbox-ose-additions "virtualbox guest additions" off \
 --stdout)
 
@@ -258,18 +253,6 @@ fi
 # this is referred to during the package install, but needs to be up here so we can ask the user things.
 all_pkgs="xorg hal dbus $DESKTOP_PGKS $extra_pkgs $vc_pkgs $slim_extra_pkgs"
 
-# check to see if we should set the user shell to bash
-if ( echo $all_pkgs | grep -q "bash" ) ; then
-	dialog --title "Bash" --yesno "Would you like to set the $VUSER user's default shell to bash?" --stdout 0 0
-	bash_yes=$?
-fi
-
-# check to see if we should allow %wheel to sudo
-if ( echo $all_pkgs | grep -q "sudo" ) ; then
-	dialog --title "sudo" --yesno "would you like to make sudo act like the default behavior on linux\n(wheel group can sudo)" --stdout 0 0
-	sudo_yes=$?
-fi
-
 # This opt activities
 opt_activities=$(dialog --checklist "Select additional options" 0 0 0 \
 	load_atapi "enable atapi to enable external storage devices like cds" on \
@@ -297,21 +280,11 @@ if [ "slim" = $mywm ] ; then
 	sed -i '' -E 's/^current_theme.+$/current_theme		slim-freebsd-dark-theme/' /usr/local/etc/slim.conf
 fi
 
-# make sudo behave like default linux setup
-if [ $sudo_yes -eq 0 ] ; then
-	test -e /usr/local/etc/sudoers && echo "%wheel ALL=(ALL) ALL" >> /usr/local/etc/sudoers
-fi
-
 # on 11.x w/ mate re-installing fixed a core-dump
 if [ $desktop = "mate" ] ; then 
 	if ( echo $(uname -r) | grep -q "11" ) ; then 
 		pkg install -f gsettings-desktop-schemas
 	fi
-fi
-
-# Set the user's shell to bash
-if [ $bash_yes -eq 0 ] ; then
-	chpass -s /usr/local/bin/bash $VUSER || echo "failed to change shell to bash"
 fi
 
 welcome="Thanks for trying this setup script. If you're new to freebsd, it's worth noting that instead of trying to search google for how to do something, you probably want to check the handbook on freebsd.org or read the built-in man pages. Doing a 'man -k <topic>' will search for any matching documentation, and unlike some, ahem, other *nix operating systems, bsd's built in documentation is really good.\n\n"
