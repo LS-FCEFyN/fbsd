@@ -287,6 +287,20 @@ if [ $desktop = "mate" ] ; then
 	fi
 fi
 
+# echo $opt_activities | grep -q load_card_readers && load_card_readers
+echo $opt_activities | grep -q load_atapi && load_atapi
+echo $opt_activities | grep -q load_fuse && load_fuse
+echo $opt_activities | grep -q load_coretemp && load_coretemp
+# echo $opt_activities | grep -q load_amdtemp && load_card_readers
+echo $opt_activities | grep -q load_bluetooth && load_bluetooth
+echo $opt_activities | grep -q enable_ipfw_firewall && enable_ipfw_firewall
+echo $opt_activities | grep -q enable_tmpfs && enable_tmpfs
+echo $opt_activities | grep -q enable_async_io && enable_async_io
+echo $opt_activities | grep -q enable_workstation_pwr_mgmnt && enable_workstation_pwr_mgmnt
+echo $opt_activities | grep -q load_bluetooth && load_bluetooth
+echo $opt_activities | grep -q enable_cups && enable_cups
+echo $opt_activities | grep -q enable_webcam && enable_webcam
+
 welcome="Thanks for trying this setup script. If you're new to freebsd, it's worth noting that instead of trying to search google for how to do something, you probably want to check the handbook on freebsd.org or read the built-in man pages. Doing a 'man -k <topic>' will search for any matching documentation, and unlike some, ahem, other *nix operating systems, bsd's built in documentation is really good.\n\n"
 dialog --msgbox "$welcome Hopefully that worked. You'll probably want to reboot at this point" 0 0
 
