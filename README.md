@@ -1,5 +1,6 @@
-# fbsd
+# FBSD
 Slightly modified version of https://github.com//nicholasbernstein/install-fbsd-desktop
+plus some extra scripts to configure doas and my printer.
 
 Run the script as the root use as follows you can use:
 
