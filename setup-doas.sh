@@ -10,4 +10,4 @@ cat <<EOT >> /usr/local/etc/doas.conf
 # Permit user lore to run programs as root, maintaining
 # envrionment variables. Useful for GUI applications.
 permit keepenv lore as root
-EOT 
+EOT
