@@ -259,7 +259,7 @@ opt_activities=$(dialog --checklist "Select additional options" 0 0 0 \
 	load_fuse "enable userspace fileystems" on \
 	load_coretemp "enable cpu temp sensors for intel (and amd)" on \
 	enable_tmpfs "enable in-mem tempfs" on \
-	enable_cups "printing" off \
+	enable_cups "printing" on \
 	enable_webcam "enables webcams to be used" on \
 	enable_async_io "enable async io for better perf" on \
 	enable_workstation_pwr_mgmnt "change pwr on batter/plugged in" on \
