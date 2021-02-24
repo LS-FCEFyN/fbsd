@@ -10,10 +10,10 @@ fetch https://raw.githubusercontent.com/NeboMoskva/fbsd/main/setup-printer.sh -o
 
 ...or not; Like Nicholas said « You're a grownup. Make your own decisions about how you want to do things. »
 
-Please do notice that while “setup-printer.sh” does handle some things such as adding the default user to the “cups” group
-manual configuration is needed, namely changing the line: 
+Please do notice that while “setup-printer.sh” does handle some things such as adding the default user to the “cups” group;
+some manual configuration is needed, namely changing the line: 
 « add path 'usb/X.Y.Z' mode 0660 group cups »
-In\On the file found at « /etc/devfs.rules » to (in my case) :
-« add path 'usb/0.2' mode 0660 group cups »
+In the file found at « /etc/devfs.rules »
+X, Y, and Z should be replaced with the target USB device listed in the /dev/usb directory that corresponds to the printer.
 To find the correct device, examine the output of « dmesg », where ugenX.Y lists the printer device,
 which is a symbolic link to a USB device in /dev/usb.
