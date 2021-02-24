@@ -168,7 +168,6 @@ extra_pkgs=$(dialog --checklist "Select additional packages to install" 0 0 0 \
 firefox "Firefox Web browser" on \
 doas "simpler alternative to sudo" on \
 linux_base-c7 "centos v7 linux binary compatiblity layer" on \
-hplip "HP Linux Imaging and Printing" on \
 git-lite "lightweight git client" of \
 libreoffice "open source & nice suite" off \
 vlc "Video Player" off \
@@ -287,11 +286,9 @@ if [ $desktop = "mate" ] ; then
 	fi
 fi
 
-# echo $opt_activities | grep -q load_card_readers && load_card_readers
 echo $opt_activities | grep -q load_atapi && load_atapi
 echo $opt_activities | grep -q load_fuse && load_fuse
 echo $opt_activities | grep -q load_coretemp && load_coretemp
-# echo $opt_activities | grep -q load_amdtemp && load_card_readers
 echo $opt_activities | grep -q load_bluetooth && load_bluetooth
 echo $opt_activities | grep -q enable_ipfw_firewall && enable_ipfw_firewall
 echo $opt_activities | grep -q enable_tmpfs && enable_tmpfs
