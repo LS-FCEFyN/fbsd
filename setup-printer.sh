@@ -3,7 +3,7 @@
 FILE=/etc/devfs.rules
 DEFAULT_USER=`grep 1001 /etc/passwd | awk -F: '{ print $1 }'`
 
-pw groupmod cups -m $DEFAULT_USER -G cups
+pw groupmod cups -m $DEFAULT_USER
 
 if test -f "$FILE"; then
 	cat <<EOT >> $FILE 
