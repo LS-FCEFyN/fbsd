@@ -173,8 +173,10 @@ grep "proc /proc procfs" /etc/fstab || echo "proc /proc procfs rw 0 0" >> /etc/f
 extra_pkgs=$(dialog --checklist "Select additional packages to install" 0 0 0 \
 firefox "Firefox Web browser" on \
 doas "simpler alternative to sudo" on \
-linux_base-c7 "centos v7 linux binary compatiblity layer" on \
-git-lite "lightweight git client" of \
+mpv "A free, open source, and cross-platform media player" on \
+hplip "HP Linux Imaging and Printing" on \
+linux_base-c7 "centos v7 linux binary compatiblity layer" off \
+git-lite "lightweight git client" off \
 libreoffice "open source & nice suite" off \
 vlc "Video Player" off \
 virtualbox-ose-additions "virtualbox guest additions" off \
