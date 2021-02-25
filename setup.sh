@@ -117,7 +117,6 @@ set_login_mgr
 desktop=$(dialog --clear --title "Select Desktop" \
         --menu "Select desktop environment to be installed" 0 0 0 \
         "KDE"  "KDE (FBSD 12+ only)" \
-	"KDE Minimal"  "Includes the bare minimum plus Dolphin Konsole Kmix" \
         "lxde"  "The lightweight X Desktop ENvironment" \
         "xfce4" "Lightweight XFCE desktop" \
         "windowmaker" "bringing neXt back" \
@@ -128,15 +127,10 @@ desktop=$(dialog --clear --title "Select Desktop" \
 case $desktop in
   KDE)
       gen_xinit "startkde"
-      DESKTOP_PGKS="kde5 ${mywm}"
+      #DESKTOP_PGKS="kde5 ${mywm}"
       ####################################
       #		Minimal Install 	 #
       ####################################
-      #DESKTOP_PGKS="plasma5-plasma dolphin konsole kmix ${mywm}" 
-      sysrc ${mywm}_enable="YES"
-      ;;
-  KDE Minimal)
-      gen_xinit "startkde"
       DESKTOP_PGKS="plasma5-plasma dolphin konsole kmix ${mywm}" 
       sysrc ${mywm}_enable="YES"
       ;;
