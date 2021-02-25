@@ -132,7 +132,7 @@ case $desktop in
       ####################################
       #		Minimal Install 	 #
       ####################################
-      DESKTOP_PGKS="plasma5-plasma dolphin konsole kmix ${mywm}" 
+      #DESKTOP_PGKS="plasma5-plasma dolphin konsole kmix ${mywm}" 
       sysrc ${mywm}_enable="YES"
       ;;
   KDE Minimal)
