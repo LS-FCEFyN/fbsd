@@ -22,3 +22,6 @@ In the file found at « /etc/devfs.rules »
 X, Y, and Z should be replaced with the target USB device listed in the /dev/usb directory that corresponds to the printer.
 To find the correct device, examine the output of « dmesg », where ugenX.Y lists the printer device,
 which is a symbolic link to a USB device in /dev/usb.
+
+#Attention
+Plasma on wayland session only gives a black screen... further configuration is needed ?
