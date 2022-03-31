@@ -1,5 +1,8 @@
 # FBSD
-Slightly modified version of https://github.com//nicholasbernstein/install-fbsd-desktop
+Slightly modified version of 
+> https://github.com//nicholasbernstein/install-fbsd-desktop
+
+
 plus some extra scripts to configure doas and, hopefully, any HP printer.
 
 Run the scripts as the root :
