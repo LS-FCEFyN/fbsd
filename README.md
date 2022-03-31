@@ -1,5 +1,5 @@
 # FBSD
-Slightly modified version of 
+Slightly modified version of :
 > https://github.com//nicholasbernstein/install-fbsd-desktop
 
 
