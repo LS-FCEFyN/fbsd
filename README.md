@@ -8,12 +8,11 @@ plus some extra scripts to configure doas and, hopefully, any HP printer.
 Run the scripts as the root :
 
 > fetch https://raw.githubusercontent.com/Loretta-Sirerol/fbsd/main/setup.sh -o - | sh
-
-
+> 
 > fetch https://raw.githubusercontent.com/Loretta-Sirerol/fbsd/main/setup-doas.sh -o - | sh
-
-
+> 
 > fetch https://raw.githubusercontent.com/Loretta-Sirerol/fbsd/main/setup-printer.sh -o - | sh
+
 
 ...or not; Like Nicholas said « You're a grownup. Make your own decisions about how you want to do things. »
 
