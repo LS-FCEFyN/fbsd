@@ -157,7 +157,6 @@ esac
 # The following are generally needed by most modern desktops
 
 sysrc dbus_enable="YES"
-sysrc hald_enable="YES"
 
 grep "proc /proc procfs" /etc/fstab || echo "proc /proc procfs rw 0 0" >> /etc/fstab
 #!/bin/sh
@@ -252,7 +251,7 @@ if [ $install_dv_drivers -eq 0  ] ; then
 fi 
 
 # this is referred to during the package install, but needs to be up here so we can ask the user things.
-all_pkgs="xorg hal dbus $DESKTOP_PGKS $extra_pkgs $vc_pkgs $slim_extra_pkgs"
+all_pkgs="xorg dbus $DESKTOP_PGKS $extra_pkgs $vc_pkgs $slim_extra_pkgs"
 
 # This opt activities
 opt_activities=$(dialog --checklist "Select additional options" 0 0 0 \
